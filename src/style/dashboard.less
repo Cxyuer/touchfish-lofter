@@ -1,0 +1,49 @@
+/* ===========================================================================
+ * LOFTER 仪表盘布局 — 单栏瀑布流
+ * 完全照 touchFish/xhs/src/style/index.less + Feed.tsx 的布局
+ * 侧边栏窄宽自适应，所有颜色走 VSCode CSS 变量
+ * ===========================================================================*/
+
+#lofterScrollableDiv {
+  height: 100vh;
+  overflow: auto;
+  background: var(--vscode-editor-background);
+}
+
+/* 顶部发现/关注 Tab 分栏：sticky 吸顶 */
+.lofter-feed-tabs {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--vscode-editor-background);
+  border-bottom: 1px solid var(--vscode-panel-border, rgba(255, 255, 255, 0.06));
+  padding-bottom: 4px;
+  .ant-tabs-nav {
+    margin-bottom: 0;
+  }
+  .ant-tabs-tab {
+    padding: 6px 16px;
+    font-size: calc(var(--app-font-size) + 1px);
+  }
+}
+
+/* 空态 */
+.lofter-feed-empty {
+  padding: 80px 24px;
+  text-align: center;
+  color: var(--vscode-descriptionForeground);
+}
+
+/* 瀑布流加载更多 / 结束提示 */
+.lofter-feed-end {
+  padding: 16px 8px;
+  text-align: center;
+  color: var(--vscode-descriptionForeground);
+  font-size: calc(var(--app-font-size) - 1px);
+}
+
+/* 兼容旧 dashboard 样式引用（避免其他组件引用时丢失） */
+.lofter-dashboard {
+  background: var(--vscode-editor-background);
+  color: var(--vscode-foreground);
+}

@@ -1,0 +1,94 @@
+{
+  "publisher": "Cxyuer",
+  "name": "touchfish-lofter",
+  "displayName": "touchfish-lofter",
+  "description": "touchfish-lofter - 在 VSCode 侧边栏刷 LOFTER feed / 搜索 / 文章 / 评论（基于 touchFish 架构）",
+  "version": "0.0.1",
+  "icon": "logo.png",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "activationEvents": [
+    "onView:lofter"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "lofter",
+    "摸鱼",
+    "博客",
+    "feed"
+  ],
+  "categories": [
+    "Other"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "lofter",
+          "title": "Lofter",
+          "icon": "assets/lofter.svg"
+        }
+      ]
+    },
+    "views": {
+      "lofter": [
+        {
+          "type": "webview",
+          "name": "LOFTER",
+          "id": "lofter"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "lofter.openPanel",
+        "title": "打开 Lofter 面板",
+        "icon": "$(window)"
+      },
+      {
+        "command": "lofter.setCookie",
+        "title": "设置 LOFTER Cookie",
+        "icon": "$(settings-gear)"
+      }
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "lofter.setCookie",
+          "when": "view == lofter",
+          "group": "navigation"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Lofter",
+      "properties": {
+        "lofter.cookie": {
+          "type": "string",
+          "default": "",
+          "description": "LOFTER 登录 Cookie（从浏览器开发者工具复制，也可放在 ~/.lofter_cookie 文件里）"
+        },
+        "lofter.fontSize": {
+          "type": "number",
+          "default": 14,
+          "description": "全局字体大小"
+        },
+        "lofter.showImg": {
+          "type": "boolean",
+          "default": true,
+          "description": "是否显示图片"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run build",
+    "build": "echo \"extension host is plain JS, no build needed\""
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.80.0",
+    "@types/node": "^18.0.0"
+  }
+}
